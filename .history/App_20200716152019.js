@@ -13,8 +13,8 @@ import { setNavigator } from './src/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
-    Login: LoginScreen,
     Signup: SignupScreen,
+    Login: LoginScreen,
   }),
   mainFlow: createBottomTabNavigator({
     trackListFlow: createStackNavigator({
@@ -31,11 +31,7 @@ const App = createAppContainer(switchNavigator);
 export default () => {
   return (
     <AuthProvider>
-      <App
-        ref={(navigator) => {
-          setNavigator(navigator);
-        }}
-      />
+      <App />
     </AuthProvider>
   );
 };

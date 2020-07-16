@@ -13,8 +13,8 @@ import { setNavigator } from './src/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
-    Login: LoginScreen,
     Signup: SignupScreen,
+    Login: LoginScreen,
   }),
   mainFlow: createBottomTabNavigator({
     trackListFlow: createStackNavigator({
