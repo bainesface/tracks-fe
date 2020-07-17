@@ -16,11 +16,7 @@ const Map = () => {
       style={styles.map}
       initialRegion={{
         ...state.currentLocation.coords,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01,
-      }}
-      region={{
-        ...state.currentLocation.coords,
+
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
       }}

@@ -13,7 +13,9 @@ import Map from '../components/Map';
 
 const CreateTrackScreen = () => {
   const [err, setErr] = useState(null);
-  const { addLocation } = useContext(LocationContext);
+  const { state, startRecording, stopRecording, addLocation } = useContext(
+    LocationContext
+  );
 
   const startWatching = async () => {
     try {
@@ -25,7 +27,7 @@ const CreateTrackScreen = () => {
           distanceInterval: 10,
         },
         (location) => {
-          addLocation(location);
+          console.log(location);
         }
       );
     } catch (e) {
