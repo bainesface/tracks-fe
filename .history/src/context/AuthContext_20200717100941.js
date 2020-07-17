@@ -5,9 +5,6 @@ import { navigate } from '../navigationRef';
 
 const authReducer = (state, action) => {
   switch (action.type) {
-    case 'logout': {
-      return { token: null, errMessage: '' };
-    }
     case 'clearErrMessage': {
       return { ...state, errMessage: '' };
     }
@@ -66,10 +63,13 @@ const login = (dispatch) => async ({ email, password }) => {
   }
 };
 
-const logout = (dispatch) => async () => {
-  await AsyncStorage.removeItem('token');
-  dispatch({ type: 'logout' });
-  navigate('Login');
+const logout = (dispatch) => {
+  return ({ email, password }) => {
+    //make api request and log out with email and password
+    //modify state to say logged out and not authenitcated
+    //error messaging
+    console.log(email, password);
+  };
 };
 
 export const { Provider, Context } = createDataContext(

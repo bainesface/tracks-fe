@@ -11,7 +11,12 @@ const AccountScreen = () => {
     <View>
       <Text style={styles.text}>Account</Text>
       <Spacer>
-        <Button title="Log Out" onPress={logout} />
+        <Button
+          title="Log Out"
+          onPress={() => {
+            logout({ email: '', password: '' });
+          }}
+        />
       </Spacer>
     </View>
   );

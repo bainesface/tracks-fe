@@ -5,8 +5,8 @@ import { navigate } from '../navigationRef';
 
 const authReducer = (state, action) => {
   switch (action.type) {
-    case 'logout': {
-      return { token: null, errMessage: '' };
+    case 'localSignin': {
+      return { ...state, tokent };
     }
     case 'clearErrMessage': {
       return { ...state, errMessage: '' };
@@ -25,10 +25,7 @@ const authReducer = (state, action) => {
 const tryLocalSignin = (dispatch) => async () => {
   const token = await AsyncStorage.getItem('token');
   if (token) {
-    dispatch({ type: 'signin', payload: token });
-    navigate('TrackList');
-  } else {
-    navigate('loginFlow');
+    dispatch({ type: 'localSignin', payload: token });
   }
 };
 
@@ -66,14 +63,16 @@ const login = (dispatch) => async ({ email, password }) => {
   }
 };
 
-const logout = (dispatch) => async () => {
-  await AsyncStorage.removeItem('token');
-  dispatch({ type: 'logout' });
-  navigate('Login');
+const logout = (dispatch) => {
+  return ({ email, password }) => {
+    //make api request and log out with email and password
+    //modify state to say logged out and not authenitcated
+    //error messaging
+  };
 };
 
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signup, login, logout, clearErrMessage, tryLocalSignin },
+  { signup, login, logout, clearErrMessage },
   { token: null, errMessage: '' }
 );

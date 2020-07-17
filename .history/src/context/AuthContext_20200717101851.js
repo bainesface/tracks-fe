@@ -6,7 +6,7 @@ import { navigate } from '../navigationRef';
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'logout': {
-      return { token: null, errMessage: '' };
+      return { ...state, token: null };
     }
     case 'clearErrMessage': {
       return { ...state, errMessage: '' };
@@ -69,7 +69,7 @@ const login = (dispatch) => async ({ email, password }) => {
 const logout = (dispatch) => async () => {
   await AsyncStorage.removeItem('token');
   dispatch({ type: 'logout' });
-  navigate('Login');
+  console.log('loggingout');
 };
 
 export const { Provider, Context } = createDataContext(

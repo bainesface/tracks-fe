@@ -8,12 +8,10 @@ import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
-import LoadingScreen from './src/screens/LoadingScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { setNavigator } from './src/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
-  Loading: LoadingScreen,
   loginFlow: createStackNavigator({
     Login: LoginScreen,
     Signup: SignupScreen,

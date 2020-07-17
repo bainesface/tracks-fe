@@ -5,13 +5,18 @@ import { Context as AuthContext } from '../context/AuthContext';
 import Spacer from '../components/Spacer';
 
 const AccountScreen = () => {
-  const { logout } = useContext(AuthContext);
+  const { state, logout } = useContext(AuthContext);
 
   return (
     <View>
-      <Text style={styles.text}>Account</Text>
+      <Text>Account</Text>
       <Spacer>
-        <Button title="Log Out" onPress={logout} />
+        <Button
+          title="Log Out"
+          onPress={() => {
+            logout({ email, password });
+          }}
+        />
       </Spacer>
     </View>
   );
