@@ -5,6 +5,7 @@ import { Context as LocationContext } from '../context/LocationContext';
 
 const Map = () => {
   const { state } = useContext(LocationContext);
+  console.log(state.currentLocation);
 
   if (!state.currentLocation) {
     return <ActivityIndicator size="large" style={{ marginTop: 200 }} />;
@@ -18,20 +19,20 @@ const Map = () => {
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
       }}
+      region={{
+        ...state.currentLocation.coords,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      }}
     >
-      <Circle
-        center={state.currentLocation.coords}
-        radius={25}
-        strokeColor="rgba(158, 158, 255, 1.0)"
-        fillColor="rgba(158, 158, 255, 0.3)"
-      />
+      <Polyline />
     </MapView>
   );
 };
 
 const styles = StyleSheet.create({
   map: {
-    height: 405,
+    height: 450,
   },
 });
 

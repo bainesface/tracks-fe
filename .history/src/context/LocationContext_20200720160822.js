@@ -3,7 +3,7 @@ import createDataContext from './createDataContext';
 const locationReducer = (state, action) => {
   switch (action.type) {
     case 'changeName':
-      return { ...state, trackName: action.payload };
+      return;
     case 'addLocation':
       return { ...state, locations: [...state.locations, action.payload] };
     case 'stopRecording':
@@ -27,7 +27,8 @@ const startRecording = (dispatch) => () => {
 const stopRecording = (dispatch) => () => {
   dispatch({ type: 'stopRecording' });
 };
-const addLocation = (dispatch) => (location, recording) => {
+const addLocation = (dispatch) => (location, isTracking) => {
+  console.log('hi there');
   dispatch({ type: 'addCurrentLocation', payload: location });
   if (recording) {
     dispatch({ type: 'addLocation', payload: location });
@@ -37,5 +38,5 @@ const addLocation = (dispatch) => (location, recording) => {
 export const { Context, Provider } = createDataContext(
   locationReducer,
   { startRecording, stopRecording, addLocation, changeName },
-  { trackName: '', recording: false, locations: [], currentLocation: null }
+  { trackName: null, recording: false, locations: [], currentLocation: null }
 );
